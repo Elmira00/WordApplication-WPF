@@ -1,0 +1,60 @@
+﻿<Window x:Class="WpfApp50.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp50"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Name="myGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="AliceBlue">
+            <WrapPanel Name="myWrapPanel">
+                <Label Name="filePathLbl" Margin="50,40,0,10" Background="White" FontSize="10" BorderBrush="Gray" BorderThickness="1"  ></Label>
+                <Button Name="folderBtn" Click="folderBtn_Click" Margin="0,40,10,10" Height="52" Width="50">
+                    <StackPanel >
+                          <Image HorizontalAlignment="Center"  Source="folder.png" />
+                        </StackPanel>
+                </Button>
+                <Button Visibility="Hidden" Name="saveBtn" Click="saveBtn_Click" Margin="0,40,1,10"  FontSize="25" Content="save" Padding="3"></Button>
+                <ToggleButton
+                Content="off"
+                FontSize="25"
+                Foreground="White"
+                Background="Red"               
+                Padding="3"
+                Name="toggleBtn"
+                 Margin="0,40,5,10"
+                   Checked="toggleBtn_Checked"
+                    Unchecked="toggleBtn_Unchecked"
+                    Visibility="Hidden"
+                >
+                </ToggleButton>
+                <Button Click="cutBtn_Click" Visibility="Hidden" Name="cutBtn" Margin="5,40,10,10"  FontSize="25" Content="cut" Padding="3"></Button>
+                <Button Click="copyBtn_Click"  Visibility="Hidden" Name="copyBtn" Margin="0,40,5,10"  FontSize="25" Content="copy" Padding="3"></Button>
+                <Button Click="pasteBtn_Click" Visibility="Hidden"  Name="pasteBtn" Margin="5,40,5,10"  FontSize="25" Content="paste" Padding="3"></Button>
+                <Button Click="selectAllBtn_Click" Visibility="Hidden" Name="selectAllBtn" Margin="0,40,10,10"  FontSize="20" Content="select all" Padding="3"></Button>
+            </WrapPanel>
+        </Grid>
+        <Grid Grid.Row="1" Background="AliceBlue">
+            <ScrollViewer>
+            <TextBox  Name="textBox" TextChanged="textBox_TextChanged" AcceptsReturn="True" TextWrapping="Wrap" Margin="50,0,30,50" FontSize="30" FontFamily="Comic Sans MS">
+            </TextBox>
+            </ScrollViewer>
+        </Grid>
+        
+    </Grid>
+    <Window.InputBindings>
+        <KeyBinding Key="S"
+                    Modifiers="Ctrl"
+                    Command="{Binding TimeLogSaveCommand}" />
+
+        <KeyBinding Key="V"
+                    Modifiers="Ctrl"
+                    Command="{Binding TimeLogCommand}" />
+
+    </Window.InputBindings>
+</Window>
